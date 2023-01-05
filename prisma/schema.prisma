@@ -9,3 +9,31 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Parish {
+  id          Int         @id @default(autoincrement())
+  name        String
+  location    String
+  adminPriest Priest      @relation(fields: [priestId], references: [id])
+  priestId    Int         @unique
+  communities Community[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Priest {
+  id            Int      @id @default(autoincrement())
+  name          String
+  currentParish Parish?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Community {
+  id        Int      @id @default(autoincrement())
+  name      String
+  parish    Parish   @relation(fields: [parishId], references: [id])
+  parishId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
