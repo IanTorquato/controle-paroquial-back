@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import { DiocesesService } from './dioceses.service';
 import { DiocesesController } from './dioceses.controller';
+import { DiocesesService } from './dioceses.service';
 
 @Module({
   controllers: [DiocesesController],
