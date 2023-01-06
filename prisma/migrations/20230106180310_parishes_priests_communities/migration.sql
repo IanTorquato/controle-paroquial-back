@@ -1,9 +1,9 @@
 -- CreateTable
 CREATE TABLE "parishes" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "location" TEXT NOT NULL,
-    "adminPriestId" INTEGER NOT NULL,
+    "adminPriestId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -12,7 +12,7 @@ CREATE TABLE "parishes" (
 
 -- CreateTable
 CREATE TABLE "priests" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -22,9 +22,9 @@ CREATE TABLE "priests" (
 
 -- CreateTable
 CREATE TABLE "communities" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "parishId" INTEGER NOT NULL,
+    "parishId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
