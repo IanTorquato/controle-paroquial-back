@@ -11,14 +11,14 @@ datasource db {
 }
 
 model Parish {
-  id          Int         @id @default(autoincrement())
-  name        String
-  location    String
-  adminPriest Priest      @relation(fields: [priestId], references: [id])
-  priestId    Int         @unique
-  communities Community[]
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  id            Int         @id @default(autoincrement())
+  name          String
+  location      String
+  adminPriest   Priest      @relation(fields: [adminPriestId], references: [id])
+  adminPriestId Int         @unique
+  communities   Community[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 
   @@map("parishes")
 }

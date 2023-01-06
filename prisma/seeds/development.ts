@@ -12,7 +12,7 @@ async function main() {
   });
 
   const parish = await prisma.parish.create({
-    data: { name: 'Paróquia Sagrado Coração de Jesus', location: 'Gravatal', priestId: priest1.id },
+    data: { name: 'Paróquia Sagrado Coração de Jesus', location: 'Gravatal', adminPriestId: priest1.id },
   });
 
   const communities = await prisma.community.createMany({

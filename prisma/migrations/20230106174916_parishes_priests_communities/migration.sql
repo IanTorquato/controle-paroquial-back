@@ -3,7 +3,7 @@ CREATE TABLE "parishes" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "location" TEXT NOT NULL,
-    "priestId" INTEGER NOT NULL,
+    "adminPriestId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -32,10 +32,10 @@ CREATE TABLE "communities" (
 );
 
 -- CreateIndex
-CREATE UNIQUE INDEX "parishes_priestId_key" ON "parishes"("priestId");
+CREATE UNIQUE INDEX "parishes_adminPriestId_key" ON "parishes"("adminPriestId");
 
 -- AddForeignKey
-ALTER TABLE "parishes" ADD CONSTRAINT "parishes_priestId_fkey" FOREIGN KEY ("priestId") REFERENCES "priests"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "parishes" ADD CONSTRAINT "parishes_adminPriestId_fkey" FOREIGN KEY ("adminPriestId") REFERENCES "priests"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "communities" ADD CONSTRAINT "communities_parishId_fkey" FOREIGN KEY ("parishId") REFERENCES "parishes"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
