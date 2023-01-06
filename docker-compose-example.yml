@@ -1,14 +1,14 @@
-version: '3.4'
+version: '3.7'
 
 services:
   postgres-cpb:
     container_name: postgres-cpb
     image: postgres:15.1
-    volumes:
-      - ./src/tmp/postgres-cpb-data/:/var/lib/postgresql/pgdata
     environment:
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "password"
       POSTGRES_DB: "controle_paroquial"
+    # volumes:
+    #   - ./src/tmp/postgres-cpb-data/:/var/lib/postgresql/pgdata
     ports:
       - "5432:5432"
