@@ -19,6 +19,8 @@ model Parish {
   communities Community[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
+
+  @@map("parishes")
 }
 
 model Priest {
@@ -27,6 +29,8 @@ model Priest {
   currentParish Parish?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  @@map("priests")
 }
 
 model Community {
@@ -36,4 +40,6 @@ model Community {
   parishId  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  @@map("communities")
 }
