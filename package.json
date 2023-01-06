@@ -52,6 +52,9 @@
     "tsconfig-paths": "4.1.0",
     "typescript": "^4.7.4"
   },
+  "prisma": {
+    "seed": "ts-node --transpile-only prisma/seeds/development.ts"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
