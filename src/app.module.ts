@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { DiocesesModule } from './dioceses/dioceses.module';
+import { PriestsModule } from './priests/priests.module';
 
-@Module({ imports: [DiocesesModule] })
+@Module({ imports: [PriestsModule] })
 export class AppModule {}
