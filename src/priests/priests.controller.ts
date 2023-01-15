@@ -20,16 +20,16 @@ export class PriestsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.priestsService.findOne(+id);
+    return this.priestsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePriestDto: UpdatePriestDto) {
-    return this.priestsService.update(+id, updatePriestDto);
+    return this.priestsService.update(id, updatePriestDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.priestsService.remove(+id);
+    return this.priestsService.remove(id);
   }
 }

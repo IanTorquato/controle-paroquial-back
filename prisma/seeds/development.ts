@@ -4,11 +4,11 @@ const prisma = new PrismaClient();
 
 async function main() {
   const priest1 = await prisma.priest.create({
-    data: { name: 'Vanderlei Martins da Rosa', email: 'vandomr@hotmail.com', birthday: new Date('1956-12-04'), phone: '(48) 3642-2121' },
+    data: { name: 'Vanderlei Martins da Rosa', email: 'vandomr@hotmail.com', birthday: new Date('1956-12-04T15:00:00.000Z'), phone: '(48) 3642-2121' },
   });
 
   const priest2 = await prisma.priest.create({
-    data: { name: 'Nilo Schilickmann', email: 'p.gravatal@diocesetb.org.br', birthday: new Date('1952-01-02'), phone: '(48) 3642-2121' },
+    data: { name: 'Nilo Schilickmann', email: 'p.gravatal@diocesetb.org.br', birthday: new Date('1952-01-02T15:00:00.000Z'), phone: '(48) 3642-2121' },
   });
 
   const parish = await prisma.parish.create({

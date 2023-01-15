@@ -10,22 +10,22 @@ export class PriestsService {
   constructor(private prisma: PrismaService) {}
 
   create(createPriestDto: CreatePriestDto) {
-    return 'This action adds a new priest';
+    return this.prisma.priest.create({ data: createPriestDto });
   }
 
   findAll() {
     return this.prisma.priest.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} priest`;
+  findOne(id: string) {
+    return this.prisma.priest.findUnique({ where: { id } });
   }
 
-  update(id: number, updatePriestDto: UpdatePriestDto) {
-    return `This action updates a #${id} priest`;
+  update(id: string, updatePriestDto: UpdatePriestDto) {
+    return this.prisma.priest.update({ data: updatePriestDto, where: { id } });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} priest`;
+  remove(id: string) {
+    return this.prisma.priest.delete({ where: { id } });
   }
 }
