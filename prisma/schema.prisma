@@ -26,6 +26,9 @@ model Parish {
 model Priest {
   id            String   @id @default(uuid())
   name          String
+  email         String   @unique
+  birthday      DateTime
+  phone         String?  @db.VarChar(24)
   currentParish Parish?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt

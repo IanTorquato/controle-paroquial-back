@@ -14,6 +14,9 @@ CREATE TABLE "parishes" (
 CREATE TABLE "priests" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "birthday" TIMESTAMP(3) NOT NULL,
+    "phone" VARCHAR(24),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -33,6 +36,9 @@ CREATE TABLE "communities" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "parishes_adminPriestId_key" ON "parishes"("adminPriestId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "priests_email_key" ON "priests"("email");
 
 -- AddForeignKey
 ALTER TABLE "parishes" ADD CONSTRAINT "parishes_adminPriestId_fkey" FOREIGN KEY ("adminPriestId") REFERENCES "priests"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
