@@ -11,36 +11,45 @@ datasource db {
 }
 
 model Parish {
-  id            String      @id @default(uuid())
-  name          String
-  location      String
-  adminPriest   Priest      @relation(fields: [adminPriestId], references: [id])
+  id       String @id @default(uuid())
+  name     String
+  location String
+
+  adminPriest   Priest      @relation("parishes_adminPriestId", fields: [adminPriestId], references: [id])
   adminPriestId String      @unique
+  priests       Priest[]
   communities   Community[]
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("parishes")
 }
 
 model Priest {
-  id            String   @id @default(uuid())
-  name          String
-  email         String   @unique
-  birthday      DateTime
-  phone         String?  @db.VarChar(24)
-  currentParish Parish?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id       String   @id @default(uuid())
+  name     String
+  email    String   @unique
+  birthday DateTime
+  phone    String?  @db.VarChar(24)
+
+  currentParish      Parish? @relation(fields: [currentParishId], references: [id])
+  currentParishId    String?
+  administeredParish Parish? @relation("parishes_adminPriestId")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("priests")
 }
 
 model Community {
-  id        String   @id @default(uuid())
-  name      String
-  parish    Parish   @relation(fields: [parishId], references: [id])
-  parishId  String
+  id   String @id @default(uuid())
+  name String
+
+  parish   Parish @relation(fields: [parishId], references: [id])
+  parishId String
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

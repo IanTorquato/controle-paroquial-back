@@ -12,7 +12,12 @@ async function main() {
   });
 
   const parish = await prisma.parish.create({
-    data: { name: 'Paróquia Santuário Sagrado Coração de Jesus', location: 'Gravatal', adminPriestId: priest1.id },
+    data: {
+      name: 'Paróquia Santuário Sagrado Coração de Jesus',
+      location: 'Gravatal',
+      adminPriestId: priest1.id,
+      priests: { connect: [{ id: priest1.id }, { id: priest2.id }] },
+    },
   });
 
   const communities = await prisma.community.createMany({
